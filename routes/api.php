@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*   Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */
+ 
+
+
+
+Route::get('/items', [ApiController::class, 'index']);
+Route::post('/items', [ApiController::class, 'store']);
+Route::get('/items/{id}', [ApiController::class, 'show']);
+Route::put('/items/{id}', [ApiController::class, 'update']);
+Route::delete('/items/{id}', [ApiController::class, 'destroy']);
